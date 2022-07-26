@@ -1,0 +1,3 @@
+[[plugins]]
+repo = 'markonm/traces.vim'
+repo = 'itchyny/lightline.vim'
