@@ -30,3 +30,16 @@ unset rc
 export PS1="\n\[\e[1;36m\]\u@\$(uname -n) \[\e[37m\]\t \[\e[35m\]\$(pwd)\n\[\e[33m\]\$ "
 export PS2="\[\e[1;33m\]> "
 trap "tput sgr0" DEBUG
+
+# options
+shopt -s histappend
+shopt -s histverify
+shopt -s histreedit
+shopt -s checkwinsize
+shopt -s checkhash
+shopt -s cdable_vars
+shopt -s no_empty_cmd_completion
+
+# less option
+export LESS='-i -M -R -S -x2'
+
