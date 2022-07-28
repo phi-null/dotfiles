@@ -26,8 +26,14 @@ fi
 
 unset rc
 
+git_repo() {
+  if git status --ignore-submodules &>/dev/null; then
+    echo -e -n "\n\e[37mgit-repo: \e[32m$(git config --get remote.origin.url | sed -r 's!(https://github.com|git@github.com:)/!!g')"
+  fi
+}
+
 # Prompt Customize
-export PS1="\n\[\e[1;36m\]\u@\$(uname -n) \[\e[37m\]\t \[\e[35m\]\$(pwd)\n\[\e[33m\]\$ "
+export PS1="\n\[\e[1;36m\]\u@\$(uname -n) \[\e[37m\]\t \[\e[35m\]\$(pwd)\$(git_repo)\n\[\e[33m\]\$ "
 export PS2="\[\e[1;33m\]> "
 trap "tput sgr0" DEBUG
 
@@ -43,3 +49,5 @@ shopt -s no_empty_cmd_completion
 # less option
 export LESS='-i -M -R -S -x2'
 
+# git pager
+export GIT_PAGER=cat
