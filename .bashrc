@@ -45,9 +45,16 @@ shopt -s checkwinsize
 shopt -s checkhash
 shopt -s cdable_vars
 shopt -s no_empty_cmd_completion
+export HISTCONTROL=ignoreboth
+export HISTSIZE=10000
+export HISTIGNORE=history:ls:'ls -la'
 
 # less option
 export LESS='-i -M -R -S -x2'
 
 # git pager
 export GIT_PAGER=cat
+
+# ls color
+eval `dircolors ~/.colorrc`
+alias ls='ls --color=auto'
