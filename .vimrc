@@ -73,6 +73,8 @@ set cursorline
 "set cursorcolumn
 " 行末の1文字先までカーソルを移動できるように
 set virtualedit=onemore
+" lightlineを使っているので-- INSERT --の表示をなくす                                                                                                                                     
+set noshowmode
 " インデントはスマートインデント
 set smartindent
 " ビープ音を可視化
