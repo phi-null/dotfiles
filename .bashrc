@@ -33,7 +33,7 @@ git_repo() {
 }
 
 # Prompt Customize
-export PS1="\n\[\e[1;36m\]\u@\$(uname -n) \[\e[37m\]\t \[\e[35m\]\$(pwd)\$(git_repo)\n\[\e[33m\]\$ "
+export PS1="\n\[\e[1;36m\]\u@\$(uname -n) \[\e[37m\]\t \[\e[35m\]\$(pwd)\$(git_repo)\n\[\e[33m\]\\$ "
 export PS2="\[\e[1;33m\]> "
 trap "tput sgr0" DEBUG
 
