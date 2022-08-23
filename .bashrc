@@ -47,7 +47,7 @@ shopt -s cdable_vars
 shopt -s no_empty_cmd_completion
 export HISTCONTROL=ignoreboth
 export HISTSIZE=10000
-export HISTIGNORE=history:ls:'ls -la'
+export HISTIGNORE=history
 
 # less option
 export LESS='-i -M -R -S -x2'
