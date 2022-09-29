@@ -26,14 +26,23 @@ fi
 
 unset rc
 
-git_repo() {
-  if git status --ignore-submodules &>/dev/null; then
-    echo -e -n "\n\e[37mgit-repo: \e[32m$(git config --get remote.origin.url | sed -r 's!(https://github.com|git@github.com:)/!!g')"
+export cmd_count=$(history | wc -l)
+showexit() {
+  local s="$?"
+  local cmd_count_tmp=$(history | wc -l)
+  if [[ $cmd_count_tmp -eq $cmd_count ]]; then
+    :
+  elif [[ $s -eq 0 ]]; then
+    export cmd_count=$(history | wc -l)
+  else
+    export cmd_count=$(history | wc -l)
+    echo -e "\e[1;31mError exited $s"
   fi
 }
+PROMPT_COMMAND=showexit
 
 # Prompt Customize
-export PS1="\n\[\e[1;36m\]\u@\$(uname -n) \[\e[37m\]\t \[\e[35m\]\$(pwd)\$(git_repo)\n\[\e[33m\]\\$ "
+export PS1="\n\[\e[1;36m\]\u@\$(uname -n) \[\e[1;37m\]\t \[\e[1;35m\]\$(pwd)\n\[\e[1;33m\]\\$ "
 export PS2="\[\e[1;33m\]> "
 trap "tput sgr0" DEBUG
 
@@ -57,4 +66,5 @@ export GIT_PAGER=cat
 
 # ls color
 eval `dircolors ~/.colorrc`
-alias ls='ls --color=auto'
+alias ls='ls -h --color=auto'
+
