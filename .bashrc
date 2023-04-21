@@ -26,6 +26,19 @@ fi
 
 unset rc
 
+export HISTTIMEFORMAT='%Y-%m-%d %H:%M:%S '
+
+showtime() {
+  local last_start=$(history 1 | cut -d ' ' -f 6,7)
+  local last_formated=$(date +%s -d"$last_start")
+  local now=$(date +%s)
+  local elapsed_time=$(expr $now - $last_formated)
+  local min=$(expr $elapsed_time / 60)
+  local sec=$(expr $elapsed_time % 60)
+  local timestamp=$(printf "%02d:%02d" $min $sec)
+  echo $timestamp
+}
+
 export cmd_count=$(history | wc -l)
 showexit() {
   local s="$?"
@@ -42,7 +55,7 @@ showexit() {
 PROMPT_COMMAND=showexit
 
 # Prompt Customize
-export PS1="\n\[\e[1;36m\]\u@\$(uname -n) \[\e[1;37m\]\t \[\e[1;35m\]\$(pwd)\n\[\e[1;33m\]\\$ "
+export PS1="\n\[\e[1;36m\]\u@\$(uname -n) \[\e[1;37m\]\t (\$(showtime)) \[\e[1;35m\]\$(pwd)\n\[\e[1;33m\]\\$ "
 export PS2="\[\e[1;33m\]> "
 trap "tput sgr0" DEBUG
 
@@ -54,9 +67,6 @@ shopt -s checkwinsize
 shopt -s checkhash
 shopt -s cdable_vars
 shopt -s no_empty_cmd_completion
-export HISTCONTROL=ignoreboth
-export HISTSIZE=10000
-export HISTIGNORE=history
 
 # less option
 export LESS='-i -M -R -S -x2'
