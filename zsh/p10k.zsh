@@ -30,6 +30,12 @@
 
   # The list of segments shown on the left. Fill it with the most important segments.
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
+    # =[Bring pre-command result info]=
+    status
+    command_execution_time
+    my_clock
+    newline
+
     # =========================[ Line #1 ]=========================
     # os_icon               # os identifier
     context
@@ -47,8 +53,8 @@
   # last prompt line gets hidden if it would overlap with left prompt.
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
-    status                  # exit code of the last command
-    command_execution_time  # duration of the last command
+    #status                  # exit code of the last command
+    #command_execution_time  # duration of the last command
     # background_jobs         # presence of background jobs
     # direnv                  # direnv status (https://direnv.net/)
     # asdf                    # asdf version manager (https://github.com/asdf-vm/asdf)
@@ -107,9 +113,9 @@
     # taskwarrior             # taskwarrior task count (https://taskwarrior.org/)
     # cpu_arch              # CPU architecture
     # time                    # current time
-    my_clock
+    #my_clock
     # =========================[ Line #2 ]=========================
-    newline                 # \n
+    #newline                 # \n
     # ip                    # ip address and bandwidth usage for a specified network interface
     # public_ip             # public IP address
     # proxy                 # system-wide http/https/ftp proxy
@@ -526,7 +532,7 @@
   # Status when some part of a pipe command fails but the overall exit status is zero. It may look
   # like this: 1|0.
   typeset -g POWERLEVEL9K_STATUS_OK_PIPE=true
-  typeset -g POWERLEVEL9K_STATUS_OK_PIPE_FOREGROUND=82
+  typeset -g POWERLEVEL9K_STATUS_OK_PIPE_FOREGROUND=226
   typeset -g POWERLEVEL9K_STATUS_OK_PIPE_VISUAL_IDENTIFIER_EXPANSION='✔'
 
   # Status when it's just an error code (e.g., '1'). No need to show it if prompt_char is enabled as
