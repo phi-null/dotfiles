@@ -1640,7 +1640,7 @@
   }
 
   function prompt_my_clock() {
-    p10k segment -f 011 -t "$(date +%H:%M:%S)" -i $'\uF1AE'
+    p10k segment -f 211 -t "$(date +%H:%M:%S)" -i $'\uF1AE'
   }
 
   # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job
